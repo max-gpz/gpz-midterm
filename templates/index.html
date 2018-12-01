@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<body>
+
+<h2>Cryptocurrency Predictions</h2>
+
+<p>A cryptocurrency predictions application by Max (Gang Ping) Zhu as part of FE-595 WS</p>
+
+<br>
+
+<h2>Please select a cryptocurrency prediction below:</h2>
+<form action="/predictions" method="POST">
+        <input type="radio" name="ChooseCoin" value="BTC" checked> BTC<br>
+        <input type="radio" name="ChooseCoin" value="XRP"> XRP<br>
+        <input type="radio" name="ChooseCoin" value="LTC"> LTC<br>
+        <input type="radio" name="ChooseCoin" value="ETH"> ETH
+<br>
+
+    <div id="center">
+        <input type="submit" value="Show me the latest prices"/>
+    </div>
+
+</form>
+{% endblock %}

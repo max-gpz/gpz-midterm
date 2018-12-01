@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<body>
+<!--This is the header of the page-->
+<h2>The latest results for {{ coin }} are as follows:</h2>
+<!--This is the dynamic text which tells a user how their investment has performed based on their input-->
+<div>{{ current_results }}</div>
+<!--This is the image of the return graph being included-->
+<!--<img src="data:image/png;base64, {{ graph_url }}"-->
+<br><br><br><br>
+
+</body>
+
+{% endblock %}

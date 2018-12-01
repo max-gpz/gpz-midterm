@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<style type="text/css">
+  .linkbutton {
+    background-color: #73b5f2;
+    color: black;
+    padding: 12px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    }
+
+  .text_center {
+  text-align: center;
+  }
+
+  .button_space {
+  margin-right: 15px;
+  }
+
+  .box {
+  width:500px;
+  border:3px;
+  border-style:solid;
+  border-color:black;
+  padding: 1em;
+  justify-content:center; display:flex;
+  }
+</style>
+    <head>
+        <meta charset="UTF-8">
+        {% if title %}
+        <title>{{ title }} - Cryptocurrency Analysis</title>
+        {% else %}
+        <title>Welcome to Cryptocurrency Analysis</title>
+        {% endif %}
+    </head>
+    <body>
+        <div>
+            <a class="linkbutton" href="/">Home</a>
+            <a class="linkbutton" href="/404">Error</a>
+        </div>
+
+        <hr>
+        {% block content %}{% endblock %}
+    </body>
+</html>
