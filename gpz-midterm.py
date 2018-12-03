@@ -137,17 +137,24 @@ def crypto_predict():
                  datetime(2019, 4, 30),
                  datetime(2019, 5, 31),
                  datetime(2019, 6, 30),
-                 datetime(2019, 7, 31)]
+                 datetime(2019, 7, 31),
+                 datetime(2019, 8, 31),
+                 datetime(2019, 9, 30),
+                 datetime(2019, 10, 31),
+                 datetime(2019, 11, 30),
+                 datetime(2019, 12, 31)]
 
     future = pd.DataFrame(index=date_list, columns=df_month.columns)
+
     df_month2 = pd.concat([df_month2, future])
     df_month2['forecast'] = invboxcox(best_model.predict(start=0, end=75), pred_input)
-    plt.figure(figsize=(15, 7))
+
+    plt.figure(figsize=(10, 5))
     df_month2.High.plot()
-    df_month2.forecast.plot(color='r', ls='--', label='predicted high')
+    df_month2.forecast.plot(color='g', ls='--', label='Predicted High Values')
     plt.legend()
-    plt.title('Cryptocurrency Prediction, by months')
-    plt.ylabel('mean USD')
+    plt.title('Cryptocurrency Prediction (months)')
+    plt.ylabel('USD')
 
     figfile = BytesIO()
     plt.savefig(figfile, format='png')
