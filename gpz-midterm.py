@@ -1,20 +1,7 @@
-#This flask asks users to select a coin, investment value, and investment date and will return the current worth
-#This flask will also return a plot of the coin returns from the initial investment date to today
-
-#I import all the packages and libraries needed for this app..
+# Packages being set up
 from flask import Flask, render_template, request, url_for, redirect
-import time
 import datetime
-from datetime import datetime
-import calendar
-import requests
-from money import Money
-import pandas as pd
 import matplotlib.pyplot as plt
-
-plt.style.use('seaborn-whitegrid')
-import numpy as np
-import seaborn as sns
 
 import io
 import matplotlib
@@ -22,10 +9,9 @@ matplotlib.use('Agg')
 from io import BytesIO
 import base64
 
-# packages being set up
+
 import pandas as pd
 import numpy as np
-import matplotlib
 from cryptocmd import CmcScraper
 from scipy import stats
 import statsmodels.api as sm
@@ -34,11 +20,9 @@ from datetime import datetime
 import warnings
 warnings.filterwarnings("ignore")
 
-#I set the app name
+# Setting the name of the app
 app = Flask(__name__)
 
-
-#Here I create an entry page that allows the user to identify their investment level
 @app.route('/')
 def start_page():
     return render_template('index.html')

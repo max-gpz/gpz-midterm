@@ -3,13 +3,12 @@
 {% block content %}
 
 <body>
-<!--This is the header of the page-->
+<!--Displays a message about the cryptocurrency selected-->
 <h2>The calculations of prices for {{ coin }} are as follows:</h2>
-<!--This is the dynamic text which tells a user how their investment has performed based on their input-->
+<!--Display the current results along with additional calculations for the selected cryptocurrency in a table format-->
 <div>{{ adjusted_results | safe}}</div>
-<!--This is the image of the return graph being included-->
+<!--Present the graph that was created-->
 <img src="data:image/png;base64,{{ result }}">
-<!--<img src="data:image/png;base64, {{ graph_url }}"-->
 <br><br><br><br>
 
 </body>
