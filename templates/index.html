@@ -6,21 +6,23 @@
 
 <h2>Cryptocurrency Predictions</h2>
 
-<p>A cryptocurrency predictions application by Max (Gang Ping) Zhu as part of FE-595 WS</p>
-
-<br>
-
-<h2>Please select a cryptocurrency prediction below:</h2>
-<form action="/predictions" method="POST">
+<h2>Please select a cryptocurrency below:</h2>
+<form method="POST">
+    <input type="submit", formaction="500" style="visibility: hidden; display: none;">
         <input type="radio" name="ChooseCoin" value="BTC" checked> BTC<br>
         <input type="radio" name="ChooseCoin" value="XRP"> XRP<br>
         <input type="radio" name="ChooseCoin" value="LTC"> LTC<br>
         <input type="radio" name="ChooseCoin" value="ETH"> ETH
-<br>
+<br><br>
 
     <div id="center">
-        <input type="submit" value="Show me the latest prices"/>
+        <button formaction="/latestprice">Show me the latest prices</button>
+        <button formaction="/predictions">Show me the predictions</button>
     </div>
 
+    <div>
+        <p>Please note that predictions can take a long time to load.</p>
+    </div>
 </form>
+
 {% endblock %}
