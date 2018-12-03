@@ -81,7 +81,7 @@ def crypto_predict():
     df_month = df.resample('M').mean()  # Resampling to monthly frequency for cryptocurrency
 
     # Creating the Box-Cox Transformations
-    df_month['high_box'], lmbda = stats.boxcox(df_month.High)
+    df_month['high_box'], pred_input = stats.boxcox(df_month.High)
 
     # Initial approximation of parameters
     Qs = range(0, 2)
@@ -116,11 +116,11 @@ def crypto_predict():
     result_table.columns = ['parameters', 'aic']
 
     # Creating a function for the Inverse Box-Cox Transformation
-    def invboxcox(y, lmbda):
-        if lmbda == 0:
+    def invboxcox(y, pred_input):
+        if pred_input == 0:
             return (np.exp(y))
         else:
-            return (np.exp(np.log(lmbda * y + 1) / lmbda))
+            return (np.exp(np.log(pred_input * y + 1) / pred_input))
 
     # Creating the Prediction for BTC
     df_month2 = df_month[['High']]
@@ -141,7 +141,7 @@ def crypto_predict():
 
     future = pd.DataFrame(index=date_list, columns=df_month.columns)
     df_month2 = pd.concat([df_month2, future])
-    df_month2['forecast'] = invboxcox(best_model.predict(start=0, end=75), lmbda)
+    df_month2['forecast'] = invboxcox(best_model.predict(start=0, end=75), pred_input)
     plt.figure(figsize=(15, 7))
     df_month2.High.plot()
     df_month2.forecast.plot(color='r', ls='--', label='predicted high')
